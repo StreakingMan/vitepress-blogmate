@@ -1,0 +1,17 @@
+{
+  "name": "vitepress-blogmate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "streakingman <z_max_y@163.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.0.4",
+    "vitepress": "1.0.0-alpha.74",
+    "vue": "^3.2.47"
+  }
+}
