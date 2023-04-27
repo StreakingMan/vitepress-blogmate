@@ -6,22 +6,31 @@
 
 module.exports = {
     root: true,
-    parser: '@typescript-eslint/parser',
+    parser: 'vue-eslint-parser',
     parserOptions: {
+        parser: '@typescript-eslint/parser',
+        ecmaFeatures: {
+            jsx: true,
+        },
         sourceType: 'module',
         ecmaVersion: 11,
     },
     env: {
         es6: true,
         node: true,
+        browser: true,
     },
-    plugins: ['eslint-plugin-prettier', '@typescript-eslint'],
     extends: [
+        'plugin:vue/vue3-recommended',
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
+        'prettier',
         'plugin:prettier/recommended',
     ],
     rules: {
-        'prettier/prettier': 'error',
+        '@typescript-eslint/ban-ts-comment': 0,
+        '@typescript-eslint/no-explicit-any': 0,
+        '@typescript-eslint/no-non-null-assertion': 0,
+        'vue/multi-word-component-names': 0,
     },
 };
