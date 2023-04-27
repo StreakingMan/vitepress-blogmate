@@ -1,17 +1,31 @@
 {
-  "name": "vitepress-blogmate",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "streakingman <z_max_y@163.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "typescript": "^5.0.4",
-    "vitepress": "1.0.0-alpha.74",
-    "vue": "^3.2.47"
-  }
+    "name": "vitepress-blogmate",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prepare": "husky install"
+    },
+    "keywords": [],
+    "author": "streakingman <z_max_y@163.com>",
+    "license": "ISC",
+    "devDependencies": {
+        "@commitlint/cli": "^17.6.1",
+        "@commitlint/config-conventional": "^17.6.1",
+        "@typescript-eslint/eslint-plugin": "^5.59.1",
+        "@typescript-eslint/parser": "^5.59.1",
+        "eslint": "^8.39.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "husky": "^8.0.3",
+        "lint-staged": "^13.2.2",
+        "prettier": "^2.8.8",
+        "stylelint": "^15.6.0",
+        "stylelint-config-prettier-scss": "^0.0.1",
+        "stylelint-config-standard-scss": "^9.0.0",
+        "typescript": "^5.0.4",
+        "vitepress": "1.0.0-alpha.74",
+        "vue": "^3.2.47"
+    }
 }
