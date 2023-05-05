@@ -1,0 +1,11 @@
+{
+    "name": "vitepress-blogmate-editor",
+    "version": "1.0.0",
+    "description": "A Editor for vitepress-blogmate",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
