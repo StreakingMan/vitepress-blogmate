@@ -59,7 +59,11 @@ importers:
         specifier: ^3.2.47
         version: 3.2.47
 
+  demo: {}
+
   docs: {}
+
+  packages/editor: {}
 
   packages/theme: {}
 
