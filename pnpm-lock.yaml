@@ -59,7 +59,11 @@ importers:
         specifier: ^3.2.47
         version: 3.2.47
 
-  demo: {}
+  demo:
+    dependencies:
+      vitepress-blogmate-theme:
+        specifier: workspace:*
+        version: link:../packages/theme
 
   docs: {}
 

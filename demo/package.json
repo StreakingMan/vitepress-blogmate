@@ -9,6 +9,9 @@
         "docs:build": "vitepress build",
         "docs:preview": "vitepress preview"
     },
+    "dependencies": {
+        "vitepress-blogmate-theme": "workspace:*"
+    },
     "keywords": [],
     "author": "",
     "license": "ISC"

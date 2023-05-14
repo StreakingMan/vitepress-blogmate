@@ -12,6 +12,5 @@
         "jsx": "preserve",
         "lib": ["esnext", "dom", "dom.iterable"]
     },
-    "include": ["./shim.d.ts"],
     "exclude": ["**/node_modules/**", "**/dist/**"]
 }
