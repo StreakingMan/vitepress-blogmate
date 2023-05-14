@@ -2,8 +2,9 @@
 import { useData } from 'vitepress';
 import NotFound from './NotFound.vue';
 import Home from './Home.vue';
-import Page from './Page.vue';
+import DefaultTheme from 'vitepress/theme';
 
+const { Layout } = DefaultTheme;
 const { page, frontmatter } = useData();
 </script>
 
@@ -12,6 +13,6 @@ const { page, frontmatter } = useData();
 
     <NotFound v-if="page.isNotFound" />
     <Home v-if="frontmatter.layout === 'home'" />
-    <Page v-else />
+    <Layout v-else />
     <!-- <Page /> renders <Content /> -->
 </template>
