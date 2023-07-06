@@ -35,7 +35,7 @@
         "stylelint-config-prettier-scss": "^1.0.0",
         "stylelint-config-standard-scss": "^9.0.0",
         "typescript": "^5.0.4",
-        "vitepress": "1.0.0-alpha.75",
+        "vitepress": "1.0.0-beta.5",
         "vue": "^3.2.47"
     }
 }
