@@ -3,8 +3,21 @@
     "version": "1.0.0",
     "description": "A theme for vitepress blog-mate",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "exports": {
+        ".": {
+            "require": "./index.js",
+            "import": "./index.js",
+            "default": "./index.js"
+        },
+        "./config": {
+            "require": "./config/index.js",
+            "import": "./config/index.js",
+            "default": "./config/index.js"
+        }
     },
     "keywords": [],
     "author": "",

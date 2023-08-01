@@ -1,7 +1,4 @@
-import Layout from './Layout.vue';
-import DefaultTheme from 'vitepress/theme';
+// import './styles/fonts.css'
 
-export default {
-    ...DefaultTheme,
-    Layout,
-};
+export * from './without-fonts';
+export { default as default } from './without-fonts';

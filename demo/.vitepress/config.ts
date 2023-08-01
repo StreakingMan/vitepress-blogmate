@@ -1,28 +1,11 @@
-import { defineConfig } from 'vitepress'
+import { defineConfigWithTheme } from 'vitepress';
+import baseConfig from 'vitepress-blogmate-theme/config';
+import type { ThemeConfig } from 'vitepress-blogmate-theme/config';
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
-  title: "Vitepress Blogmate Demo",
-  description: "Demo for vitepress blogmate theme.",
-  themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
-
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
-})
+export default defineConfigWithTheme<ThemeConfig>({
+    extends: baseConfig,
+    themeConfig: {
+        todo: '123',
+    },
+});
