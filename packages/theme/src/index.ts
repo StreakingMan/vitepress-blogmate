@@ -1,11 +1,15 @@
-// import './styles/index.css';
-// import VPApp from './components/VPApp.vue';
-import Layout from './Layout.vue';
 import type { Theme } from 'vitepress';
-// import { withConfigProvider } from './composables/config';
+import DefaultTheme from 'vitepress/theme';
+import { h } from 'vue';
+import NotFound from './NotFound.vue';
+import './styles/index.css';
 
 const VPTheme: Theme = {
-    Layout,
+    Layout() {
+        return h(DefaultTheme.Layout, null, {
+            'not-found': () => h(NotFound),
+        });
+    },
 };
 
 export { VPTheme };
