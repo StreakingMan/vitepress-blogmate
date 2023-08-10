@@ -1,4 +1,3 @@
+import { VPTheme } from 'vitepress-blogmate-theme';
 
-import Theme from 'vitepress-blogmate-theme'
-
-export default Theme
+export default VPTheme;

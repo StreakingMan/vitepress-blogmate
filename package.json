@@ -4,7 +4,6 @@
     "description": "A blog theme and editor toolkit set integrated with VitePress powerful features.",
     "main": "index.js",
     "scripts": {
-        "dev:client": "tsc --declaration --no-emit -w -p packages/theme ",
         "demo:dev": "pnpm -C demo docs:dev",
         "docs:dev": "pnpm -C docs docs:dev",
         "docs:build": "pnpm -C docs docs:build",

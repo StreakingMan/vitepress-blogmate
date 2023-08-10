@@ -1,8 +1,7 @@
 import { defineConfigWithTheme } from 'vitepress';
 import baseConfig from 'vitepress-blogmate-theme/config';
-import type { ThemeConfig } from 'vitepress-blogmate-theme/config';
+import type { Config as ThemeConfig } from 'vitepress-blogmate-theme';
 
-// https://vitepress.dev/reference/site-config
 export default defineConfigWithTheme<ThemeConfig>({
     extends: baseConfig,
     themeConfig: {

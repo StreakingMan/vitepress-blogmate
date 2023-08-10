@@ -10,7 +10,12 @@
         "resolveJsonModule": true,
         "verbatimModuleSyntax": true,
         "jsx": "preserve",
-        "lib": ["esnext", "dom", "dom.iterable"]
+        "lib": ["esnext", "dom", "dom.iterable"],
+        "paths": {
+            "vitepress-blogmate-theme": [
+                "./packages/vitepress-blogmate-theme/src/index.ts"
+            ]
+        }
     },
     "exclude": ["**/node_modules/**", "**/dist/**"]
 }
