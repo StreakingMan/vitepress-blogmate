@@ -49,14 +49,16 @@ onMounted(() => {
     Runner.run(runner, engine);
 
     const colors = ['#f19648', '#f5d259', '#f55a3c', '#063e7b', '#ececd1'];
-    const makeFour = (x: number, y: number): Body => {
+    const fourPath =
+        '0,0 10,0 10,30 30,30 30,0 40,0 40,60 30,60 30,40 0,40 0,0';
+    const zeroPath =
+        '0,0 40,0 40,60 0,60 0,1 10,11 10,50 30,50 30,10 10,10 0,0';
+    const genPathBody = (x: number, y: number, path: string): Body => {
         return Bodies.fromVertices(
             x,
             y,
             // @ts-ignore
-            Vertices.fromPath(
-                '0,0 10,0 10,30 30,30 30,0 40,0 40,60 30,60 30,40 0,40 0,0'
-            ),
+            Vertices.fromPath(path),
             {
                 render: {
                     fillStyle: Common.choose(colors),
@@ -69,31 +71,11 @@ onMounted(() => {
         );
     };
 
-    const makeZero = (x: number, y: number): Body => {
-        return Bodies.fromVertices(
-            x,
-            y,
-            // @ts-ignore
-            Vertices.fromPath(
-                '0,0 40,0 40,60 0,60 0,1 10,11 10,50 30,50 30,10 10,10 0,0'
-            ),
-            {
-                render: {
-                    fillStyle: Common.choose(colors),
-                    strokeStyle: Common.choose(colors),
-                    lineWidth: 1,
-                },
-                restitution: Common.random(0.5, 1),
-            },
-            true
-        );
-    };
-
-    const four1 = makeFour(WIDTH / 2 - 240, 100);
+    const four1 = genPathBody(WIDTH / 2 - 240, 100, fourPath);
     Body.scale(four1, 2, 2);
-    const zero = makeZero(WIDTH / 2 - 40, 100);
+    const zero = genPathBody(WIDTH / 2 - 40, 100, zeroPath);
     Body.scale(zero, 2, 2);
-    const four2 = makeFour(WIDTH / 2 + 160, 100);
+    const four2 = genPathBody(WIDTH / 2 + 160, 100, fourPath);
     Body.scale(four2, 2, 2);
 
     Composite.add(world, four1);
