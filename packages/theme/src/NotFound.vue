@@ -1,89 +1,118 @@
 <script setup lang="ts">
-import Matter from 'matter-js';
 import { onMounted } from 'vue';
+import {
+    Body,
+    Bodies,
+    Common,
+    Composite,
+    Engine,
+    Mouse,
+    MouseConstraint,
+    Render,
+    Runner,
+    Vertices,
+} from 'matter-js';
+import * as PolyDecomp from 'poly-decomp-es';
+
+Common.setDecomp(PolyDecomp);
 
 onMounted(() => {
-    var Engine = Matter.Engine,
-        Render = Matter.Render,
-        Runner = Matter.Runner,
-        Composites = Matter.Composites,
-        Common = Matter.Common,
-        MouseConstraint = Matter.MouseConstraint,
-        Mouse = Matter.Mouse,
-        Composite = Matter.Composite,
-        Bodies = Matter.Bodies;
+    const WIDTH = window.innerWidth;
+    const HEIGHT = window.innerHeight / 2;
 
     // create engine
-    var engine = Engine.create({
+    const engine = Engine.create({
         positionIterations: 10,
         velocityIterations: 10,
     });
 
-    var world = engine.world;
+    const world = engine.world;
 
     // create renderer
-    var render = Render.create({
+    const render = Render.create({
         element: document.getElementById('box') || undefined,
         engine: engine,
         options: {
-            width: 800,
-            height: 600,
+            width: WIDTH,
+            height: HEIGHT,
+            wireframes: false,
+            background: 'transparent',
         },
     });
 
     Render.run(render);
 
     // create runner
-    var runner = Runner.create({
+    const runner = Runner.create({
         isFixed: true,
     });
     Runner.run(runner, engine);
 
-    // add bodies
-    var scale = 0.3;
+    const colors = ['#f19648', '#f5d259', '#f55a3c', '#063e7b', '#ececd1'];
+    const makeFour = (x: number, y: number): Body => {
+        return Bodies.fromVertices(
+            x,
+            y,
+            // @ts-ignore
+            Vertices.fromPath(
+                '0,0 10,0 10,30 30,30 30,0 40,0 40,60 30,60 30,40 0,40 0,0'
+            ),
+            {
+                render: {
+                    fillStyle: Common.choose(colors),
+                    strokeStyle: Common.choose(colors),
+                    lineWidth: 1,
+                },
+                restitution: Common.random(0.5, 1),
+            },
+            true
+        );
+    };
 
-    var stack = Composites.stack(40, 40, 38, 18, 0, 0, function (x, y) {
-        var sides = Math.round(Common.random(1, 8));
+    const makeZero = (x: number, y: number): Body => {
+        return Bodies.fromVertices(
+            x,
+            y,
+            // @ts-ignore
+            Vertices.fromPath(
+                '0,0 40,0 40,60 0,60 0,1 10,11 10,50 30,50 30,10 10,10 0,0'
+            ),
+            {
+                render: {
+                    fillStyle: Common.choose(colors),
+                    strokeStyle: Common.choose(colors),
+                    lineWidth: 1,
+                },
+                restitution: Common.random(0.5, 1),
+            },
+            true
+        );
+    };
 
-        switch (Math.round(Common.random(0, 1))) {
-            case 0:
-                if (Common.random() < 0.8) {
-                    return Bodies.rectangle(
-                        x,
-                        y,
-                        Common.random(25, 50) * scale,
-                        Common.random(25, 50) * scale
-                    );
-                } else {
-                    return Bodies.rectangle(
-                        x,
-                        y,
-                        Common.random(80, 120) * scale,
-                        Common.random(25, 30) * scale
-                    );
-                }
-            case 1:
-                return Bodies.polygon(
-                    x,
-                    y,
-                    sides,
-                    Common.random(25, 50) * scale
-                );
-        }
-    });
+    const four1 = makeFour(WIDTH / 2 - 240, 100);
+    Body.scale(four1, 2, 2);
+    const zero = makeZero(WIDTH / 2 - 40, 100);
+    Body.scale(zero, 2, 2);
+    const four2 = makeFour(WIDTH / 2 + 160, 100);
+    Body.scale(four2, 2, 2);
 
-    Composite.add(world, stack);
+    Composite.add(world, four1);
+    Composite.add(world, zero);
+    Composite.add(world, four2);
 
     Composite.add(world, [
         // walls
-        Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
-        Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
-        Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
-        Bodies.rectangle(0, 300, 50, 600, { isStatic: true }),
+        Bodies.rectangle(WIDTH / 2, HEIGHT, WIDTH, 20, {
+            isStatic: true,
+            restitution: 1,
+            render: {
+                fillStyle: 'transparent',
+            },
+        }),
     ]);
 
     // add mouse control
-    var mouse = Mouse.create(render.canvas),
+    const mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
             constraint: {
@@ -102,7 +131,7 @@ onMounted(() => {
     // fit the render viewport to the scene
     Render.lookAt(render, {
         min: { x: 0, y: 0 },
-        max: { x: 800, y: 600 },
+        max: { x: WIDTH, y: HEIGHT },
     });
 });
 </script>
@@ -110,6 +139,6 @@ onMounted(() => {
 <template>
     <div class="bm-not-found">
         <div id="box"></div>
-        <div>this is not found</div>
+        <button>back home</button>
     </div>
 </template>
