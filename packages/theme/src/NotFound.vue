@@ -16,6 +16,11 @@ import * as PolyDecomp from 'poly-decomp-es';
 
 Common.setDecomp(PolyDecomp);
 
+// matter-js的random方法是伪随机，这里重写一个
+const random = (min: number, max: number) => {
+    return Math.random() * (max - min) + min;
+};
+
 onMounted(() => {
     const WIDTH = window.innerWidth;
     const HEIGHT = window.innerHeight / 2;
@@ -73,10 +78,13 @@ onMounted(() => {
 
     const four1 = genPathBody(WIDTH / 2 - 240, 100, fourPath);
     Body.scale(four1, 2, 2);
+    Body.rotate(four1, random(-20, 20));
     const zero = genPathBody(WIDTH / 2 - 40, 100, zeroPath);
     Body.scale(zero, 2, 2);
+    Body.rotate(zero, random(-20, 20));
     const four2 = genPathBody(WIDTH / 2 + 160, 100, fourPath);
     Body.scale(four2, 2, 2);
+    Body.rotate(four2, random(-20, 20));
 
     Composite.add(world, four1);
     Composite.add(world, zero);
