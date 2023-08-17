@@ -1,1 +1,1 @@
-export default {};
+export { default as BTMineCard } from './components/BTMineCard.vue';

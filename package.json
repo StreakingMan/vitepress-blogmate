@@ -5,6 +5,8 @@
     "main": "index.js",
     "scripts": {
         "demo:dev": "pnpm -C demo docs:dev",
+        "demo:build": "pnpm -C demo docs:build",
+        "demo:preview": "pnpm -C demo docs:preview",
         "docs:dev": "pnpm -C docs docs:dev",
         "docs:build": "pnpm -C docs docs:build",
         "docs:preview": "pnpm -C docs docs:preview",

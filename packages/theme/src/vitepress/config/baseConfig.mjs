@@ -30,7 +30,6 @@ const config = {
         },
     },
     themeConfig: {
-        todo: 'todo',
         siteTitle: 'VitePress BlogMate',
         search: {
             provider: 'local',
