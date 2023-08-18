@@ -35,12 +35,14 @@
     border-radius: 50%;
     transition: all 0.3s;
     align-self: flex-start;
+    filter: blur(2px);
 }
 
 .bt-mine-card:hover .bt-mine-card-avatar {
     border-radius: 4px;
     width: var(--avatar-hover-size);
     height: var(--avatar-hover-size);
+    filter: blur(0);
 }
 
 .bt-mine-card-header {
