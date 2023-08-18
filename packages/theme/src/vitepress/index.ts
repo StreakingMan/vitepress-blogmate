@@ -1,15 +1,9 @@
 import type { Theme } from 'vitepress';
-import DefaultTheme from 'vitepress/theme';
-import { h } from 'vue';
-import VPNotFound from './components/VPNotFound.vue';
 import './styles/index.css';
+import VPApp from './components/VPApp.vue';
 
 const VPTheme: Theme = {
-    Layout() {
-        return h(DefaultTheme.Layout, null, {
-            'not-found': () => h(VPNotFound),
-        });
-    },
+    Layout: VPApp,
 };
 
 export { VPTheme };

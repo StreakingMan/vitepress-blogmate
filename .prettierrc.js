@@ -9,4 +9,5 @@ module.exports = {
     singleQuote: true,
     htmlWhitespaceSensitivity: 'css',
     endOfLine: 'lf',
+    printWidth: 100,
 };

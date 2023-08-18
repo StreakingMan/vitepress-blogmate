@@ -1,5 +1,4 @@
 import { defineConfigWithTheme } from 'vitepress';
-// @ts-ignore
 import baseConfig from 'vitepress-blogmate-theme/config';
 import type { Config as ThemeConfig } from 'vitepress-blogmate-theme';
 
