@@ -127,8 +127,18 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="bm-not-found">
+    <div class="VPNotFound">
         <div id="box"></div>
         <button>back home</button>
     </div>
 </template>
+
+<style scoped>
+.VPNotFound {
+    position: absolute;
+    inset: var(--vp-nav-height) 0 0;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+</style>
