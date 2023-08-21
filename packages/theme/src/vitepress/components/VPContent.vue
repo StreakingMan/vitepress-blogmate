@@ -5,7 +5,7 @@ import VPDoc from 'vitepress/dist/client/theme-default/components/VPDoc.vue';
 import VPPage from 'vitepress/dist/client/theme-default/components/VPPage.vue';
 import VPHome from './VPHome.vue';
 import VPNotFound from './VPNotFound.vue';
-import { BTMineCard } from '../../core';
+import { BTBackToTop, BTMineCard } from '../../core';
 import type { Config } from '../config';
 
 const { page, frontmatter } = useData();
@@ -60,6 +60,8 @@ const { theme } = useData<Config>();
         </VPDoc>
 
         <BTMineCard v-if="theme.mineInfo" />
+
+        <BTBackToTop />
     </div>
 </template>
 

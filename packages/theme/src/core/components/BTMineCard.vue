@@ -11,20 +11,13 @@ const mineInfo = computed<Config['mineInfo']>(() => theme.value.mineInfo);
 <template>
     <div class="bt-mine-card">
         <div class="bt-mine-card-header">
-            <img
-                class="bt-mine-card-avatar"
-                :src="mineInfo?.avatar"
-                alt="avatar"
-            />
+            <img class="bt-mine-card-avatar" :src="mineInfo?.avatar" alt="avatar" />
             <div class="bt-mine-card-title">
                 {{ mineInfo?.title }}
             </div>
         </div>
         <div class="bt-mine-card-description">{{ mineInfo?.description }}</div>
         <div class="spacer"></div>
-        <VPNavBarSocialLinks
-            v-if="mineInfo?.showSocialLinks"
-            class="social-links"
-        />
+        <VPNavBarSocialLinks v-if="mineInfo?.showSocialLinks" class="social-links" />
     </div>
 </template>
