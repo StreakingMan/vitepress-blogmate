@@ -19,8 +19,9 @@ export default defineConfigWithTheme<ThemeConfig>({
         },
         nav: [
             { text: 'Home', link: '/' },
-            { text: 'Api Examples', link: '/api-examples' },
-            { text: 'Markdown Examples', link: '/markdown-examples' },
+            { text: '标签', link: '/tags' },
+            { text: '分类', link: '/categories' },
+            { text: '归档', link: '/archives' },
         ],
     },
 });
