@@ -7,6 +7,7 @@ import VPHome from './VPHome.vue';
 import VPNotFound from './VPNotFound.vue';
 import { BTBackToTop, BTMineCard } from '../../core';
 import type { Config } from '../config';
+import { BTTags, BTCategories, BTArchives } from '../../core';
 
 const { page, frontmatter } = useData();
 const { hasSidebar } = useSidebar();
@@ -23,6 +24,10 @@ const { theme } = useData<Config>();
         }"
     >
         <slot v-if="page.isNotFound" name="not-found"><VPNotFound /></slot>
+
+        <BTTags v-else-if="frontmatter.layout === 'tags'" />
+        <BTCategories v-else-if="frontmatter.layout === 'categories'" />
+        <BTArchives v-else-if="frontmatter.layout === 'archives'" />
 
         <VPPage v-else-if="frontmatter.layout === 'page'">
             <template #page-top><slot name="page-top" /></template>
