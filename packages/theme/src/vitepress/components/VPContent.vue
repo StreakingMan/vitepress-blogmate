@@ -5,9 +5,8 @@ import VPDoc from 'vitepress/dist/client/theme-default/components/VPDoc.vue';
 import VPPage from 'vitepress/dist/client/theme-default/components/VPPage.vue';
 import VPHome from './VPHome.vue';
 import VPNotFound from './VPNotFound.vue';
-import { BTBackToTop, BTMineCard } from '../../core';
+import { BTBackToTop, BTMineCard, BTTags, BTCategories, BTArchives } from '../../core';
 import type { Config } from '../config';
-import { BTTags, BTCategories, BTArchives } from '../../core';
 
 const { page, frontmatter } = useData();
 const { hasSidebar } = useSidebar();
