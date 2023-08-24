@@ -132,6 +132,19 @@ importers:
       vitepress:
         specifier: 1.0.0-rc.4
         version: 1.0.0-rc.4(@algolia/client-search@4.18.0)(@types/node@18.16.2)(search-insights@2.6.0)
+    devDependencies:
+      '@types/cross-spawn':
+        specifier: ^6.0.2
+        version: 6.0.2
+      '@types/fs-extra':
+        specifier: ^11.0.1
+        version: 11.0.1
+      cross-spawn:
+        specifier: ^7.0.3
+        version: 7.0.3
+      fs-extra:
+        specifier: ^11.1.1
+        version: 11.1.1
 
 packages:
 
@@ -1120,10 +1133,23 @@ packages:
       '@types/responselike': 1.0.0
     dev: true
 
+  /@types/cross-spawn@6.0.2:
+    resolution: {integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==}
+    dependencies:
+      '@types/node': 18.16.2
+    dev: true
+
   /@types/debug@4.1.8:
     resolution: {integrity: sha512-/vPO1EPOs306Cvhwv7KfVfYvOJqA/S/AXjaHQiJboCZzcNDb+TIJFN9/2C9DZ//ijSKWioNyUxD792QmDJ+HKQ==}
     dependencies:
       '@types/ms': 0.7.31
+    dev: true
+
+  /@types/fs-extra@11.0.1:
+    resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
+    dependencies:
+      '@types/jsonfile': 6.1.1
+      '@types/node': 18.16.2
     dev: true
 
   /@types/fs-extra@9.0.13:
@@ -1147,6 +1173,12 @@ packages:
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
+    dev: true
+
+  /@types/jsonfile@6.1.1:
+    resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
+    dependencies:
+      '@types/node': 18.16.2
     dev: true
 
   /@types/keyv@3.1.4:
