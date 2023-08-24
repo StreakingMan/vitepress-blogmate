@@ -5,7 +5,7 @@ import { computed, onMounted, ref, watchEffect } from 'vue';
 const props = defineProps<ContentDataExtra>();
 
 const date = computed(() => {
-    return new Date(props.lastUpdated);
+    return new Date(props.frontmatter?.date || props.lastUpdated);
 });
 const isoDatetime = computed(() => {
     return date.value.toISOString();
@@ -16,7 +16,6 @@ onMounted(() => {
     watchEffect(() => {
         datetime.value = new Intl.DateTimeFormat(undefined, {
             dateStyle: 'short',
-            timeStyle: 'short',
         }).format(date.value);
     });
 });

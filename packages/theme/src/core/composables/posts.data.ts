@@ -24,8 +24,10 @@ export default createContentLoader<ContentDataExtra[]>('posts/*.md', {
     async transform(rawData) {
         const _rawData: ContentDataExtra[] = [];
         for (const file of rawData) {
-            const lastUpdated =
-                (await getGitTimestamp(file.url.slice(1).replace(/\.html$/, '.md'))) || 0;
+            const fmDate = file.frontmatter.date;
+            const lastUpdated = fmDate
+                ? new Date(fmDate).getTime()
+                : (await getGitTimestamp(file.url.slice(1).replace(/\.html$/, '.md'))) || 0;
             let title = '',
                 readingTime = 0;
             if (file.src) {
@@ -34,6 +36,7 @@ export default createContentLoader<ContentDataExtra[]>('posts/*.md', {
                 // 阅读时间，按照 200 字/分钟计算
                 readingTime = Math.ceil(file.src.length / 200);
             }
+
             _rawData.push({
                 ...file,
                 lastUpdated,
