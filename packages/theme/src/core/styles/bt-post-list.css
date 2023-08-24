@@ -26,8 +26,7 @@
 .bt-post-list .fade-in-item {
     opacity: 0;
     transform: translateX(30%);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transition-delay: 0.2s;
+    transition: all 0.4s;
 }
 
 .bt-post-list .fade-in {

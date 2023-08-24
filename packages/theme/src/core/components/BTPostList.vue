@@ -19,7 +19,7 @@ onMounted(() => {
 
 const { frontmatter } = useData();
 const hasGap = computed(() => {
-    return !!(frontmatter as any)?.features?.length;
+    return !!(frontmatter as any)?.value?.features?.length;
 });
 </script>
 

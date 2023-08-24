@@ -23,15 +23,19 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="bt-post-card">
-        <div class="bt-post-card-title">
-            {{ title }}
-        </div>
-        <div class="bt-post-card-meta">
-            <time :datetime="isoDatetime">✏️ {{ lastUpdated === 0 ? '尚未提交' : datetime }}</time>
-            <span>⏰ About {{ readingTime }} min </span>
-            <span>🏷️ {{ frontmatter.tags.join(' ') }}</span>
-        </div>
-        <div class="bt-post-card-excerpt" v-html="excerpt"></div>
-    </div>
+    <a :href="url" class="bt-post-card">
+        <article class="bt-post-card-box">
+            <div class="bt-post-card-title">
+                {{ title }}
+            </div>
+            <div class="bt-post-card-meta">
+                <time :datetime="isoDatetime">
+                    更新时间: {{ lastUpdated === 0 ? '尚未提交' : datetime }}
+                </time>
+                <span>阅读约 {{ readingTime }} 分钟 </span>
+                <span>🏷️ {{ frontmatter.tags.join(' ') }}</span>
+            </div>
+            <div class="bt-post-card-excerpt" v-html="excerpt"></div>
+        </article>
+    </a>
 </template>
