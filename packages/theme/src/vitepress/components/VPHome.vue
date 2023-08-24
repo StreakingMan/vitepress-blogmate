@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import VPHomeHero from 'vitepress/dist/client/theme-default/components/VPHomeHero.vue';
 import VPHomeFeatures from 'vitepress/dist/client/theme-default/components/VPHomeFeatures.vue';
+import { usePosts } from '../../core/composables/usePosts';
+import { BTPostList } from '../../core';
+
+const posts = usePosts();
 </script>
 
 <template>
@@ -17,6 +21,8 @@ import VPHomeFeatures from 'vitepress/dist/client/theme-default/components/VPHom
         <slot name="home-features-before" />
         <VPHomeFeatures />
         <slot name="home-features-after" />
+
+        <BTPostList :list="posts" />
 
         <Content />
     </div>

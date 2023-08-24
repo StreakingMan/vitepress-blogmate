@@ -6,6 +6,7 @@ export type ContentDataExtra = ContentData & {
     lastUpdated: number;
     title: string;
     readingTime: number;
+    html?: string;
 };
 
 declare const data: ContentDataExtra[];
@@ -23,7 +24,8 @@ export default createContentLoader<ContentDataExtra[]>('posts/*.md', {
     async transform(rawData) {
         const _rawData: ContentDataExtra[] = [];
         for (const file of rawData) {
-            const lastUpdated = await getGitTimestamp(file.url.slice(1).replace(/\.html$/, '.md'));
+            const lastUpdated =
+                (await getGitTimestamp(file.url.slice(1).replace(/\.html$/, '.md'))) || 0;
             let title = '',
                 readingTime = 0;
             if (file.src) {

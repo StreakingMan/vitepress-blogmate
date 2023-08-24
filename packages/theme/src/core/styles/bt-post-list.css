@@ -1,0 +1,36 @@
+.bt-post-list {
+    position: relative;
+    padding: 0 24px;
+}
+
+@media (min-width: 640px) {
+    .bt-post-list {
+        padding: 0 48px;
+    }
+}
+
+@media (min-width: 960px) {
+    .bt-post-list {
+        padding: 0 64px;
+    }
+}
+
+.bt-post-list .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 auto;
+    max-width: 1152px;
+}
+
+.bt-post-list .fade-in-item {
+    opacity: 0;
+    transform: translateX(30%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.2s;
+}
+
+.bt-post-list .fade-in {
+    opacity: 1;
+    transform: translateX(0);
+}
