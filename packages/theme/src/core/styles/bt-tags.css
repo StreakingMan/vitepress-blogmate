@@ -80,3 +80,7 @@
     color: var(--vp-c-brand);
     font-weight: bolder;
 }
+
+.bt-tags-item.active {
+    text-decoration: underline;
+}

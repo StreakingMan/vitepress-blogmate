@@ -26,26 +26,33 @@ const searchedTags = computed(() => {
 const boxEl = ref(null);
 const { height } = useElementSize(boxEl);
 
-const activeTag = ref('');
+const activeTags = ref(new Set());
 const { tag: queryTag } = useUrlSearchParams('history');
 if (queryTag) {
-    const _tag = Array.isArray(queryTag) ? queryTag[0] : queryTag;
-    if (tags.includes(_tag)) {
-        activeTag.value = _tag;
-    }
+    const _tags = (Array.isArray(queryTag) ? queryTag[0] : queryTag).split(',');
+    _tags.forEach((t) => activeTags.value.add(t));
 }
 const onTagClick = (tag: string) => {
-    if (activeTag.value === tag) {
-        activeTag.value = '';
+    if (activeTags.value.has(tag)) {
+        activeTags.value.delete(tag);
     } else {
-        activeTag.value = tag;
+        activeTags.value.add(tag);
+    }
+    const tags = Array.from(activeTags.value);
+    if (tags.length) {
+        history.replaceState(null, '', `/tags.html?tag=${tags.join(',')}`);
+    } else {
+        history.replaceState(null, '', '/tags.html');
     }
 };
 const filteredPosts = computed(() => {
-    if (!activeTag.value) {
+    if (!activeTags.value.size) {
         return posts;
     }
-    return posts.filter((p) => p.frontmatter.tags.includes(activeTag.value));
+    // 所有标签都要匹配
+    return posts.filter((p) => {
+        return Array.from(activeTags.value).every((t) => p.frontmatter.tags.includes(t));
+    });
 });
 </script>
 
@@ -64,14 +71,14 @@ const filteredPosts = computed(() => {
                     class="bt-tags-item"
                     style="font-size: 1.2em"
                 >
-                    啥也没有~
+                    #啥也没有~
                 </span>
                 <a
                     v-for="tag in searchedTags"
                     :key="tag"
                     class="bt-tags-item"
                     :class="{
-                        active: activeTag === tag,
+                        active: activeTags.has(tag),
                     }"
                     :style="{
                         fontSize: `${1.2 + (tagsMap.get(tag) || 0) * 0.6}em`,
