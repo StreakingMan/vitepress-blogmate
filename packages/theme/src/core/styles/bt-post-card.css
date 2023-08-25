@@ -3,7 +3,6 @@
     border: 1px solid var(--vp-c-bg-soft);
     border-radius: 12px;
     background-color: var(--vp-c-bg-soft);
-    max-width: 688px;
     cursor: pointer;
 }
 

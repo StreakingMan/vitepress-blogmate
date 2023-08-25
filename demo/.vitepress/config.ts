@@ -14,7 +14,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         mineInfo: {
             avatar: 'https://avatars.githubusercontent.com/u/30397306?v=4',
             title: `Hello, I'm StreakingMan`,
-            description: '种一棵树最好的时间是十年前，其次是现在。',
+            description: '正在经历社会毒打的整活型前端工程师',
             showSocialLinks: true,
         },
         nav: [

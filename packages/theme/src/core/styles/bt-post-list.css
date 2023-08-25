@@ -16,11 +16,35 @@
 }
 
 .bt-post-list .container {
+    margin: 0 auto;
+    max-width: 1152px;
+    display: flex;
+    padding-bottom: 40vh;
+}
+
+.bt-post-list .card-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin: 0 auto;
-    max-width: 1152px;
+    max-width: 688px;
+    flex: 1 1 auto;
+}
+
+.bt-post-list .extra-container {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20vh;
+    padding-left: 64px;
+}
+
+.bt-post-list .extra-container > * {
+    position: sticky;
+    font-weight: lighter;
+    font-size: 3em;
+    font-style: italic;
+    line-height: 1;
+    transition: opacity 1s ease-in-out 0.5s;
 }
 
 .bt-post-list .fade-in-item {

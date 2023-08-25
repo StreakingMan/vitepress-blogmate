@@ -10,11 +10,14 @@ defineProps<{
     list: ContentDataExtra[];
 }>();
 
-const itemRefs = ref<Ref<ComponentPublicInstance>[]>([]);
-const visibleRefs = ref<Ref<boolean>[]>([]);
+const cardRefs = ref<Ref<ComponentPublicInstance>[]>([]);
+const cardVisibleRefs = ref<Ref<boolean>[]>([]);
+const textRefs = ref<Ref<ComponentPublicInstance>[]>([]);
+const textVisibleRefs = ref<Ref<boolean>[]>([]);
 
 onMounted(() => {
-    visibleRefs.value = itemRefs.value.map((r) => useElementVisibility(r));
+    cardVisibleRefs.value = cardRefs.value.map((r) => useElementVisibility(r));
+    textVisibleRefs.value = textRefs.value.map((r) => useElementVisibility(r));
 });
 
 const { frontmatter } = useData();
@@ -31,16 +34,31 @@ const hasGap = computed(() => {
                 marginTop: hasGap ? '48px' : '0',
             }"
         >
-            <BTPostCard
-                v-for="(post, idx) in list"
-                v-bind="post"
-                :key="post.url"
-                ref="itemRefs"
-                class="fade-in-item"
-                :class="{
-                    'fade-in': visibleRefs[idx]?.value,
-                }"
-            />
+            <div class="card-container">
+                <BTPostCard
+                    v-for="(post, idx) in list"
+                    v-bind="post"
+                    :key="post.url"
+                    ref="cardRefs"
+                    class="fade-in-item"
+                    :class="{
+                        'fade-in': cardVisibleRefs[idx]?.value,
+                    }"
+                />
+            </div>
+            <div class="extra-container">
+                <p
+                    v-for="(text, idx) in frontmatter.scrollWelcomeText"
+                    ref="textRefs"
+                    :key="idx"
+                    :style="{
+                        top: `${3 + idx * 1.2}em`,
+                        opacity: textVisibleRefs[idx]?.value ? 1 : 0,
+                    }"
+                >
+                    {{ text }}
+                </p>
+            </div>
         </div>
     </div>
 </template>
