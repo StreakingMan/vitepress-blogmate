@@ -4,6 +4,7 @@
     border-radius: 12px;
     background-color: var(--vp-c-bg-soft);
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .bt-post-card:hover {
