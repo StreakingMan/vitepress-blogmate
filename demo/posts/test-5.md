@@ -1,5 +1,5 @@
 ---
-tags: ['test', 'demo']
+tags: [hello]
 ---
 
 # Title test 5

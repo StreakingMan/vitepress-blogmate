@@ -1,5 +1,5 @@
 ---
-tags: [test2]
+tags: [test2, next]
 ---
 
 # Title test 2
