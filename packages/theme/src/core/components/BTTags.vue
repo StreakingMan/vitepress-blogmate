@@ -91,6 +91,8 @@ const filteredPosts = computed(() => {
             </div>
         </div>
 
-        <BTPostCard v-for="post in filteredPosts" v-bind="post" :key="post.url" />
+        <div class="bt-tags-posts-grid">
+            <BTPostCard v-for="post in filteredPosts" v-bind="post" :key="post.url" />
+        </div>
     </div>
 </template>
