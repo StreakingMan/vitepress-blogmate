@@ -3,6 +3,7 @@ import { computed } from 'vue';
 
 const props = defineProps<{
     name: string;
+    isLink?: boolean;
 }>();
 
 // 根据标签名称生成颜色，名称相同的标签颜色相同
@@ -18,6 +19,7 @@ const color = computed(() => {
 
 <template>
     <a
+        v-if="isLink"
         class="bt-tag-link"
         :href="`/tags.html?tag=${name}`"
         :style="{
@@ -26,4 +28,13 @@ const color = computed(() => {
     >
         #{{ name }}
     </a>
+    <span
+        v-else
+        class="bt-tag"
+        :style="{
+            color,
+        }"
+    >
+        #{{ name }}
+    </span>
 </template>

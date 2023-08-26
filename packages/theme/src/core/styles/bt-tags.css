@@ -75,7 +75,6 @@
 
 .bt-tags-item:hover,
 .bt-tags-item.active {
-    color: var(--vp-c-brand);
     font-weight: bolder;
 }
 
