@@ -8,7 +8,7 @@
 }
 
 .bt-post-card:hover {
-    transform: translateX(-24px);
+    transform: translateX(-12px);
     border-color: var(--vp-c-brand);
     background-color: var(--vp-c-bg-soft-up);
 }
@@ -16,19 +16,18 @@
 .bt-post-card-box {
     display: flex;
     flex-direction: column;
-    gap: 8px;
 }
 
 .bt-post-card-title {
     margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.2rem;
     line-height: 1.5;
 }
 
 .bt-post-card-excerpt {
     font-size: 1rem;
     line-height: 1.5;
+    color: var(--vp-c-text-2);
 }
 
 .bt-post-card-meta {
@@ -36,4 +35,5 @@
     align-items: center;
     gap: 12px;
     font-size: 0.875rem;
+    color: var(--vp-c-text-2);
 }

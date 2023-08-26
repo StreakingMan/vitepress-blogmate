@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ContentDataExtra } from '../composables/posts.data';
 import { computed, onMounted, ref, watchEffect } from 'vue';
+import BTTag from './BTTag.vue';
 
 const props = defineProps<ContentDataExtra>();
 
@@ -32,7 +33,8 @@ onMounted(() => {
                     更新时间: {{ lastUpdated === 0 ? '尚未提交' : datetime }}
                 </time>
                 <span>阅读约 {{ readingTime }} 分钟 </span>
-                <span>🏷️ {{ frontmatter.tags.join(' ') }}</span>
+
+                <BTTag v-for="tag in frontmatter.tags || []" :key="tag" :name="tag" />
             </div>
             <div class="bt-post-card-excerpt" v-html="excerpt"></div>
         </article>

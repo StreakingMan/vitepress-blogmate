@@ -1,3 +1,7 @@
-.bt-tag{
+.bt-tag-link:not(.bt-tags-item) {
+    text-decoration: none;
+}
 
+.bt-tag-link:not(.bt-tags-item):hover {
+    text-decoration: underline;
 }

@@ -3,6 +3,7 @@ import { usePosts } from '../composables/usePosts';
 import { computed, ref } from 'vue';
 import { useElementSize, useUrlSearchParams } from '@vueuse/core';
 import BTPostCard from './BTPostCard.vue';
+import BTTag from './BTTag.vue';
 
 const posts = usePosts();
 
@@ -73,7 +74,7 @@ const filteredPosts = computed(() => {
                 >
                     #啥也没有~
                 </span>
-                <a
+                <BTTag
                     v-for="tag in searchedTags"
                     :key="tag"
                     class="bt-tags-item"
@@ -84,10 +85,9 @@ const filteredPosts = computed(() => {
                         fontSize: `${1.2 + (tagsMap.get(tag) || 0) * 0.6}em`,
                         animationDelay: `${Math.random() * 0.5}s`,
                     }"
-                    @click="onTagClick(tag)"
-                >
-                    #{{ tag }}
-                </a>
+                    :name="tag"
+                    @click.prevent.stop="onTagClick(tag)"
+                />
             </div>
         </div>
 
