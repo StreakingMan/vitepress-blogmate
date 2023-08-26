@@ -33,6 +33,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: max-content;
 }
 .bt-tags-container .bt-post-card {
     width: 100%;
@@ -71,6 +72,7 @@
     transition: all 0.3s;
     opacity: 0;
     animation: appearDown 0.5s ease-in-out 0.2s forwards;
+    user-select: none;
 }
 
 .bt-tags-item:hover,
@@ -88,6 +90,9 @@
     gap: 24px;
 }
 @media (min-width: 1200px) {
+    .bt-tags-box {
+        max-width: 1024px;
+    }
     .bt-tags-posts-grid {
         grid-template-columns: repeat(2, 1fr);
         max-width: 1024px;

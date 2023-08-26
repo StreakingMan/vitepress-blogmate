@@ -9,7 +9,7 @@ const posts = usePosts();
 
 const tagsMap = new Map<string, number>();
 posts.forEach((p) => {
-    p.frontmatter.tags.forEach((t: string) => {
+    p.frontmatter.tags?.forEach((t: string) => {
         if (tagsMap.has(t)) {
             tagsMap.set(t, tagsMap.get(t)! + 1);
         } else {
@@ -33,10 +33,18 @@ if (queryTag) {
     const _tags = (Array.isArray(queryTag) ? queryTag[0] : queryTag).split(',');
     _tags.forEach((t) => activeTags.value.add(t));
 }
-const onTagClick = (tag: string) => {
-    if (activeTags.value.has(tag)) {
-        activeTags.value.delete(tag);
+const postGridEl = ref<HTMLElement | null>(null);
+const onTagClick = (tag: string, e: PointerEvent) => {
+    if (e.shiftKey) {
+        // 多选
+        if (activeTags.value.has(tag)) {
+            activeTags.value.delete(tag);
+        } else {
+            activeTags.value.add(tag);
+        }
     } else {
+        // 单选
+        activeTags.value.clear();
         activeTags.value.add(tag);
     }
     const tags = Array.from(activeTags.value);
@@ -45,6 +53,10 @@ const onTagClick = (tag: string) => {
     } else {
         history.replaceState(null, '', '/tags.html');
     }
+    // 平滑滚动到文章列表
+    postGridEl.value?.scrollIntoView({
+        behavior: 'smooth',
+    });
 };
 const filteredPosts = computed(() => {
     if (!activeTags.value.size) {
@@ -52,7 +64,7 @@ const filteredPosts = computed(() => {
     }
     // 所有标签都要匹配
     return posts.filter((p) => {
-        return Array.from(activeTags.value).every((t) => p.frontmatter.tags.includes(t));
+        return Array.from(activeTags.value).every((t) => p.frontmatter.tags?.includes(t));
     });
 });
 </script>
@@ -86,12 +98,12 @@ const filteredPosts = computed(() => {
                         animationDelay: `${Math.random() * 0.5}s`,
                     }"
                     :name="tag"
-                    @click.prevent.stop="onTagClick(tag)"
+                    @click.prevent.stop="(e) => onTagClick(tag, e)"
                 />
             </div>
         </div>
 
-        <div class="bt-tags-posts-grid">
+        <div ref="postGridEl" class="bt-tags-posts-grid">
             <BTPostCard v-for="post in filteredPosts" v-bind="post" :key="post.url" />
         </div>
     </div>
