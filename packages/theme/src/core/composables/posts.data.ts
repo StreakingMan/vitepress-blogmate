@@ -15,11 +15,20 @@ export { data };
 export default createContentLoader<ContentDataExtra[]>('posts/*.md', {
     includeSrc: true,
     excerpt(file) {
-        file.excerpt = file.content
-            .split('\n')
-            .filter((c) => !!c.trim() && !c.startsWith('# '))
-            .slice(0, 4)
-            .join(' ');
+        let excerpt = '';
+        for (const line of file.content.split('\n')) {
+            if (excerpt.length > 200) break;
+            // 跳过一级标题
+            if (line.startsWith('# ')) continue;
+            // 去掉开头的 # 号，和内容里的 markdown 链接
+            const _line = line
+                .trim()
+                .replaceAll(/^#+\s+/g, '')
+                .replaceAll(/\[([^\]]+)]\([^)]+\)/g, '$1');
+            if (!_line) continue;
+            excerpt += _line + ' ';
+        }
+        file.excerpt = excerpt;
     },
     async transform(rawData) {
         const _rawData: ContentDataExtra[] = [];
