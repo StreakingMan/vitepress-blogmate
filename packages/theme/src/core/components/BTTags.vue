@@ -60,7 +60,7 @@ const onTagClick = (tag: string, e: PointerEvent) => {
 };
 const filteredPosts = computed(() => {
     if (!activeTags.value.size) {
-        return posts;
+        return [];
     }
     // 所有标签都要匹配
     return posts.filter((p) => {
