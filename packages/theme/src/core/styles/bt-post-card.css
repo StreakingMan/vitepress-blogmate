@@ -33,7 +33,11 @@
 .bt-post-card-meta {
     display: flex;
     align-items: center;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 0 12px;
     font-size: 0.875rem;
     color: var(--vp-c-text-2);
+    border-bottom: 1px solid var(--vp-c-divider);
+    margin: 0 -24px 4px;
+    padding: 0 24px 4px;
 }
