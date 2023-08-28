@@ -3,13 +3,13 @@
     padding: 0 24px;
 }
 
-@media (min-width: 640px) {
+@media (width >= 640px) {
     .bt-post-list {
         padding: 0 48px;
     }
 }
 
-@media (min-width: 960px) {
+@media (width >= 960px) {
     .bt-post-list {
         padding: 0 64px;
     }
