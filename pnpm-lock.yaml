@@ -53,8 +53,8 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       vitepress:
-        specifier: 1.0.0-rc.9
-        version: 1.0.0-rc.9(@algolia/client-search@4.19.1)(@types/node@18.16.2)(search-insights@2.6.0)
+        specifier: 1.0.0-rc.10
+        version: 1.0.0-rc.10(@algolia/client-search@4.19.1)(@types/node@18.16.2)(search-insights@2.6.0)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -5731,6 +5731,48 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
+  /vitepress@1.0.0-rc.10(@algolia/client-search@4.19.1)(@types/node@18.16.2)(search-insights@2.6.0):
+    resolution: {integrity: sha512-+MsahIWqq5WUEmj6MR4obcKYbT7im07jZPCQPdNJExkeOSbOAJ4xypSLx88x7rvtzWHhHc5aXbOhCRvGEGjFrw==}
+    hasBin: true
+    dependencies:
+      '@docsearch/css': 3.5.2
+      '@docsearch/js': 3.5.2(@algolia/client-search@4.19.1)(search-insights@2.6.0)
+      '@vue/devtools-api': 6.5.0
+      '@vueuse/core': 10.4.1(vue@3.3.4)
+      '@vueuse/integrations': 10.4.1(focus-trap@7.5.2)(vue@3.3.4)
+      focus-trap: 7.5.2
+      mark.js: 8.11.1
+      minisearch: 6.1.0
+      shiki: 0.14.3
+      vite: 4.4.9(@types/node@18.16.2)
+      vue: 3.3.4
+    transitivePeerDependencies:
+      - '@algolia/client-search'
+      - '@types/node'
+      - '@types/react'
+      - '@vue/composition-api'
+      - async-validator
+      - axios
+      - change-case
+      - drauu
+      - fuse.js
+      - idb-keyval
+      - jwt-decode
+      - less
+      - lightningcss
+      - nprogress
+      - qrcode
+      - react
+      - react-dom
+      - sass
+      - search-insights
+      - sortablejs
+      - stylus
+      - sugarss
+      - terser
+      - universal-cookie
+    dev: true
+
   /vitepress@1.0.0-rc.4(@algolia/client-search@4.19.1)(@types/node@18.16.2)(search-insights@2.6.0):
     resolution: {integrity: sha512-JCQ89Bm6ECUTnyzyas3JENo00UDJeK8q1SUQyJYou+4Yz5BKEc/F3O21cu++DnUT2zXc0kvQ2Aj4BZCc/nioXQ==}
     hasBin: true
@@ -5774,48 +5816,6 @@ packages:
       - terser
       - universal-cookie
     dev: false
-
-  /vitepress@1.0.0-rc.9(@algolia/client-search@4.19.1)(@types/node@18.16.2)(search-insights@2.6.0):
-    resolution: {integrity: sha512-HqMcWqJnxk/8aIN9LqhvEbKkBYop8qGs3/qw3Tt1AwdIRoTGOw5sk7g84J5j1H0p9Axvk87c9xrtMum4G/VVjQ==}
-    hasBin: true
-    dependencies:
-      '@docsearch/css': 3.5.2
-      '@docsearch/js': 3.5.2(@algolia/client-search@4.19.1)(search-insights@2.6.0)
-      '@vue/devtools-api': 6.5.0
-      '@vueuse/core': 10.4.1(vue@3.3.4)
-      '@vueuse/integrations': 10.4.1(focus-trap@7.5.2)(vue@3.3.4)
-      focus-trap: 7.5.2
-      mark.js: 8.11.1
-      minisearch: 6.1.0
-      shiki: 0.14.3
-      vite: 4.4.9(@types/node@18.16.2)
-      vue: 3.3.4
-    transitivePeerDependencies:
-      - '@algolia/client-search'
-      - '@types/node'
-      - '@types/react'
-      - '@vue/composition-api'
-      - async-validator
-      - axios
-      - change-case
-      - drauu
-      - fuse.js
-      - idb-keyval
-      - jwt-decode
-      - less
-      - lightningcss
-      - nprogress
-      - qrcode
-      - react
-      - react-dom
-      - sass
-      - search-insights
-      - sortablejs
-      - stylus
-      - sugarss
-      - terser
-      - universal-cookie
-    dev: true
 
   /vscode-oniguruma@1.7.0:
     resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==}
