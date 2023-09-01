@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-    name: 'Vitepress Blogmate Demo'
-    text: 'Demo for vitepress blogmate theme.'
+    name: 'Vibrancy!'
+    text: '一个灵动的vitepress博客主题'
     tagline: My great project tagline
     actions:
         - theme: brand

@@ -28,7 +28,7 @@ const config = {
     },
     lastUpdated: true,
     themeConfig: {
-        siteTitle: 'VitePress BlogMate',
+        siteTitle: 'Vibrancy',
         search: {
             provider: 'local',
         },

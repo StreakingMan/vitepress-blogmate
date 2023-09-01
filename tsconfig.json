@@ -12,9 +12,7 @@
         "jsx": "preserve",
         "lib": ["esnext", "dom", "dom.iterable"],
         "paths": {
-            "vitepress-blogmate-theme": [
-                "./packages/vitepress-blogmate-theme/src/index.ts"
-            ]
+            "vibrancy-vitepress-theme": ["./packages/theme/src/index.ts"]
         }
     },
     "exclude": ["**/node_modules/**", "**/dist/**"]

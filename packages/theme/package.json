@@ -1,7 +1,7 @@
 {
-    "name": "vitepress-blogmate-theme",
+    "name": "vibrancy-vitepress-theme",
     "version": "1.0.0",
-    "description": "A theme for vitepress blog-mate",
+    "description": "一个灵动的vitepress博客主题",
     "main": "src/index.ts",
     "exports": {
         ".": "./src/index.ts",

@@ -61,7 +61,7 @@ importers:
 
   demo:
     dependencies:
-      vitepress-blogmate-theme:
+      vibrancy-vitepress-theme:
         specifier: workspace:*
         version: link:../packages/theme
 

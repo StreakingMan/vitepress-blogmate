@@ -11,7 +11,7 @@
         "docs:preview": "vitepress preview"
     },
     "dependencies": {
-        "vitepress-blogmate-theme": "workspace:*"
+        "vibrancy-vitepress-theme": "workspace:*"
     },
     "keywords": [],
     "author": "",

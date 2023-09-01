@@ -1,3 +1,3 @@
-import { VPTheme } from 'vitepress-blogmate-theme';
+import { VPTheme } from 'vibrancy-vitepress-theme';
 
 export default VPTheme;
