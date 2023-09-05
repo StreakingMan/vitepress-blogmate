@@ -17,7 +17,11 @@ const mineInfo = computed<Config['mineInfo']>(() => theme.value.mineInfo);
             </div>
         </div>
         <div class="bt-mine-card-description">{{ mineInfo?.description }}</div>
-        <div class="spacer"></div>
+        <div class="spacer bt-mine-card-skills">
+            <div v-for="skill in mineInfo?.skills || []" :key="skill" class="bt-mine-card-skill">
+                {{ skill }}
+            </div>
+        </div>
         <VPNavBarSocialLinks v-if="mineInfo?.showSocialLinks" class="social-links" />
     </div>
 </template>

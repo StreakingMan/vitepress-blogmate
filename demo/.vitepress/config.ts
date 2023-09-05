@@ -16,6 +16,7 @@ export default defineConfigWithTheme<ThemeConfig>({
             title: `Hello, I'm StreakingMan`,
             description: '正在经历社会毒打的整活型前端工程师',
             showSocialLinks: true,
+            skills: ['vue', 'react', 'typescript', 'nodejs', 'painting'],
         },
         nav: [
             { text: 'Home', link: '/' },

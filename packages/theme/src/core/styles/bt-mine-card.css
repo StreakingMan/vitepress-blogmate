@@ -19,6 +19,7 @@
     flex-direction: column;
     gap: 8px;
     backdrop-filter: blur(2px);
+    z-index: 20;
 }
 
 .bt-mine-card:hover {
@@ -84,4 +85,19 @@
 
 .bt-mine-card .spacer {
     flex: 1;
+}
+
+.bt-mine-card-skills {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.bt-mine-card-skill {
+    background-color: var(--vp-c-bg-alt);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 16px;
 }

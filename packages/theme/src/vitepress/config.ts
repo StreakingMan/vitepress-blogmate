@@ -10,4 +10,5 @@ interface MineInfo {
     description: string;
     // 开启后，NavBar 中的 socialLinks 将隐藏
     showSocialLinks?: boolean;
+    skills?: string[];
 }
