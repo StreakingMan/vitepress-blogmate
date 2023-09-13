@@ -17,11 +17,24 @@ const mineInfo = computed<Config['mineInfo']>(() => theme.value.mineInfo);
             </div>
         </div>
         <div class="bt-mine-card-description">{{ mineInfo?.description }}</div>
-        <div class="spacer bt-mine-card-skills">
-            <div v-for="skill in mineInfo?.skills || []" :key="skill" class="bt-mine-card-skill">
-                {{ skill }}
+        <div class="spacer">
+            <div class="bt-mine-card-skills">
+                <div
+                    v-for="(skill, idx) in mineInfo?.skills || []"
+                    :key="skill"
+                    class="bt-mine-card-skill"
+                    :style="{
+                        transitionDelay: `${idx * 0.1}s`,
+                    }"
+                >
+                    {{ skill }}
+                </div>
             </div>
         </div>
         <VPNavBarSocialLinks v-if="mineInfo?.showSocialLinks" class="social-links" />
     </div>
 </template>
+
+<style lang="scss">
+// 动态生成10个延迟
+</style>

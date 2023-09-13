@@ -20,13 +20,13 @@
     gap: 8px;
     backdrop-filter: blur(2px);
     z-index: 20;
+    will-change: width, height, border-radius, padding;
 }
 
 .bt-mine-card:hover {
-    border-radius: 8px;
+    border-radius: 8px 0 0 8px;
     width: var(--card-hover-size);
     height: var(--card-hover-size);
-    right: 8px;
     padding: 8px;
 }
 
@@ -38,6 +38,7 @@
     transition: all 0.3s;
     align-self: flex-start;
     filter: blur(2px);
+    will-change: width, height, border-radius, filter;
 }
 
 .bt-mine-card:hover .bt-mine-card-avatar {
@@ -77,6 +78,7 @@
     border-radius: 8px;
     transform: translateY(200%);
     transition: transform 0.5s;
+    will-change: transform;
 }
 
 .bt-mine-card:hover .social-links {
@@ -89,7 +91,6 @@
 
 .bt-mine-card-skills {
     display: flex;
-    align-items: flex-start;
     flex-wrap: wrap;
     gap: 4px;
 }
@@ -100,4 +101,13 @@
     border-radius: 4px;
     font-size: 12px;
     line-height: 16px;
+    opacity: 0;
+    transition: all 0.3s;
+    transform: scale(0.3);
+    will-change: transform, opacity;
+}
+
+.bt-mine-card:hover .bt-mine-card-skill {
+    opacity: 1;
+    transform: scale(1);
 }
