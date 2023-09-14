@@ -25,12 +25,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s;
     cursor: pointer;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-.bt-categories-item:hover {
-    transform: scale(1.1);
+.bt-categories-item a {
+    transition: color 0.3s;
+    user-select: none;
+}
+
+.bt-categories-item a:hover {
+    color: var(--vp-c-brand);
 }
