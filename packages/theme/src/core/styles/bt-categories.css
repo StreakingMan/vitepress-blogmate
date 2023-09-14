@@ -9,15 +9,14 @@
 .bt-categories-gird {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-auto-rows: 3em;
     gap: 16px;
 
     @media (width >= 640px) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, auto);
     }
 
     @media (width >= 960px) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, auto);
     }
 }
 
@@ -26,10 +25,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 0.75em;
-    border-radius: 8px;
-    border: 1px solid var(--vp-c-divider);
-    background-color: var(--vp-c-bg);
     transition: all 0.3s;
     cursor: pointer;
     font-size: 1.5rem;

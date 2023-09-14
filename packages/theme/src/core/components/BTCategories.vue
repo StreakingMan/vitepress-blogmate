@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePosts } from '../composables/usePosts';
+import { onMounted, ref } from 'vue';
 
 const posts = usePosts();
 const categoryMap = new Map<string, number>();
@@ -12,11 +13,23 @@ posts.forEach((p) => {
     }
 });
 
+// categoryMap重新映射分布到1～3
+const max = Math.max(...Array.from(categoryMap.values()));
+categoryMap.forEach((v, k) => {
+    categoryMap.set(k, (v / max) * 2 + 1);
+});
+
 const categories = Array.from(categoryMap.entries())
     .map((t) => t[0])
     .filter((t) => t != undefined);
 
-// 根据文章数量，动态生成面积
+const itemRefs = ref<HTMLElement[]>([]);
+onMounted(() => {
+    itemRefs.value.forEach((item) => {
+        const a = item.firstChild as HTMLElement;
+        console.log(a.offsetTop, a.offsetLeft, a.offsetWidth, a.offsetHeight);
+    });
+});
 </script>
 
 <template>
@@ -25,11 +38,8 @@ const categories = Array.from(categoryMap.entries())
             <div
                 v-for="category in categories"
                 :key="category"
+                ref="itemRefs"
                 class="bt-categories-item"
-                :style="{
-                    gridColumnStart: `span ${categoryMap.get(category)}`,
-                    gridRowStart: `span ${categoryMap.get(category)}`,
-                }"
             >
                 <a :href="`/categories/${category}.html`">
                     {{ category }}
