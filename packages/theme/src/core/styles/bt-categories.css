@@ -1,9 +1,23 @@
 .bt-categories-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: absolute;
     inset: 0;
+    flex-direction: column;
+}
+
+.bt-categories-input {
+    margin-top: 20vh;
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--vp-c-border);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
 }
 
 .bt-categories-gird {
@@ -25,7 +39,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     font-size: 1.5rem;
     font-weight: bold;
 }

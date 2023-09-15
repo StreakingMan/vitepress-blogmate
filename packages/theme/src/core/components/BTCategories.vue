@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { usePosts } from '../composables/usePosts';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { Engine, World, Bodies, Body } from 'matter-js';
+import { matterExpand, matterShrink, matterThrowUp } from '../utils/matter';
 
 const posts = usePosts();
 const categoryMap = new Map<string, number>();
@@ -14,10 +15,10 @@ posts.forEach((p) => {
     }
 });
 
-// categoryMap重新映射分布到1～4之间
+// categoryMap重新映射分布到1～3之间
 const max = Math.max(...Array.from(categoryMap.values()));
 categoryMap.forEach((v, k) => {
-    categoryMap.set(k, Math.ceil((v / max) * 3) + 1);
+    categoryMap.set(k, Math.ceil((v / max) * 3));
 });
 
 const categories = Array.from(categoryMap.entries())
@@ -30,6 +31,7 @@ interface Rect {
     y: number;
     width: number;
     height: number;
+    text: string;
 }
 const engine = Engine.create({
     gravity: {
@@ -37,41 +39,55 @@ const engine = Engine.create({
         y: 0,
     },
 });
+const world = engine.world;
+const categoryBodies: Body[] = [];
+const itemRects: Rect[] = [];
 onMounted(() => {
-    const itemRects: Rect[] = [];
-
     itemRefs.value.forEach((item) => {
-        const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = item.firstChild as HTMLElement;
+        const { offsetLeft, offsetTop, offsetWidth, offsetHeight, innerText } =
+            item.firstChild as HTMLElement;
         itemRects.push({
             x: offsetLeft + offsetWidth / 2,
             y: offsetTop + offsetHeight / 2,
             width: offsetWidth,
             height: offsetHeight,
+            text: innerText,
         });
     });
 
-    const world = engine.world;
+    // 缓存宽度值，matter没法直接获取旋转后的宽度
+    const widthCache = new Map<Body, number>();
     for (const rect of itemRects) {
         const body = Bodies.rectangle(rect.x, rect.y, rect.width, rect.height, {
             restitution: 0.6,
-            friction: 0.5,
+            friction: 1,
         });
+        categoryBodies.push(body);
         World.add(world, body);
-    }
-
-    for (const body of world.bodies) {
-        const category = itemRefs.value[world.bodies.indexOf(body)].firstChild!.textContent!;
+        const category = rect.text;
         const scale = categoryMap.get(category)!;
         body.mass = scale;
-        setTimeout(() => {
-            expand(body, scale);
-        }, 1000 * Math.random());
+        matterExpand(body, scale, widthCache);
     }
+
+    // 输入框
+    const input = inputRef.value!;
+    const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = input;
+    const inputBody = Bodies.rectangle(
+        offsetLeft + offsetWidth / 2,
+        offsetTop + offsetHeight / 2,
+        offsetWidth,
+        offsetHeight,
+        {
+            isStatic: true,
+        }
+    );
+    World.add(world, inputBody);
 
     // 边框
     const ground = Bodies.rectangle(
         window.innerWidth / 2,
-        window.innerHeight * 0.75,
+        window.innerHeight * 0.85,
         window.innerWidth,
         100,
         {
@@ -96,33 +112,10 @@ onMounted(() => {
 
     World.add(world, [ground, leftWall, rightWall, topWall]);
 
-    // 膨胀动画
-    // 缓存宽度值，matter没法直接获取旋转后的宽度
-    const widthCache = new Map<Body, number>();
-    function expand(body: Body, scale: number) {
-        // 动画持续的时间（以帧为单位）
-        const animationFrames = 60;
-        // 计算每帧应该缩放的增量 既 n 次方根
-        const scaleIncrement = Math.pow(scale, 1 / animationFrames);
-        // 初始宽度
-        const initialWidth = body.bounds.max.x - body.bounds.min.x;
-
-        // 逐帧缩放
-        const _update = () => {
-            const lastWidth = widthCache.get(body) || body.bounds.max.x - body.bounds.min.x;
-            if (lastWidth < initialWidth * scale) {
-                Body.scale(body, scaleIncrement, scaleIncrement);
-                widthCache.set(body, lastWidth * scaleIncrement);
-                requestAnimationFrame(_update);
-            }
-        };
-        _update();
-    }
-
     function update() {
         Engine.update(engine);
         for (let i = 0; i < itemRects.length; i++) {
-            const body = world.bodies[i];
+            const body = categoryBodies[i];
             const item = itemRefs.value[i];
             const { x: matterX, y: matterY } = body.position;
             const angle = body.angle;
@@ -137,6 +130,29 @@ onMounted(() => {
     }
 
     update();
+});
+
+const inputRef = ref<HTMLInputElement>();
+const searchValue = ref('');
+const throwUpCancels: (() => void)[] = [];
+const shrinkCancels: (() => void)[] = [];
+watch(searchValue, (v) => {
+    engine.gravity.y = 1;
+    for (const fn of [...throwUpCancels, ...shrinkCancels]) {
+        fn();
+    }
+    for (let i = 0; i < itemRects.length; i++) {
+        const category = itemRects[i].text;
+        const body = categoryBodies[i];
+        const isSearch = category.toLowerCase().includes(v.toLowerCase());
+        if (!v || !isSearch) {
+            body.timeScale = 1;
+        } else if (isSearch) {
+            throwUpCancels.push(matterThrowUp(body, engine));
+            throwUpCancels.push(matterShrink(body, engine));
+            body.timeScale = 0.5;
+        }
+    }
 });
 
 const gravityUp = ref(true);
@@ -164,6 +180,7 @@ const toggleTimeScale = () => {
 
 <template>
     <div class="bt-categories-container" @click="toggleGravity" @dblclick="toggleTimeScale">
+        <input ref="inputRef" v-model="searchValue" class="bt-categories-input" @click.stop />
         <div class="bt-categories-gird">
             <div
                 v-for="category in categories"
