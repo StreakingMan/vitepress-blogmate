@@ -66,8 +66,8 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       vitepress:
-        specifier: 1.0.0-rc.24
-        version: 1.0.0-rc.24(@algolia/client-search@4.19.1)(@types/node@18.16.2)(postcss@8.4.31)(search-insights@2.6.0)(typescript@5.0.4)
+        specifier: 1.0.0-rc.25
+        version: 1.0.0-rc.25(@algolia/client-search@4.19.1)(@types/node@18.16.2)(postcss@8.4.31)(search-insights@2.6.0)(typescript@5.0.4)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -6226,8 +6226,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitepress@1.0.0-rc.24(@algolia/client-search@4.19.1)(@types/node@18.16.2)(postcss@8.4.31)(search-insights@2.6.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-RpnL8cnOGwiRlBbrYQUm9sYkJbtyOt/wYXk2diTcokY4yvks/5lq9LuSt+MURWB6ZqwpSNHvTmxgaSfLoG0/OA==}
+  /vitepress@1.0.0-rc.25(@algolia/client-search@4.19.1)(@types/node@18.16.2)(postcss@8.4.31)(search-insights@2.6.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-1dqWiHNThNrVZ08ixmfEDBEH+764KOgnev9oXga/x6cN++Vb9pnuu8p3K6DQP+KZrYcG+WiX7jxal0iSNpAWuQ==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4.3.2
