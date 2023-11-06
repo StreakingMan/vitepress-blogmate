@@ -5,3 +5,7 @@
 @import 'bt-tags.css';
 @import 'bt-tag.css';
 @import 'bt-categories.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

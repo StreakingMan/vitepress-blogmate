@@ -1,10 +1,8 @@
 .bt-post-card {
-    padding: 24px;
-    border: 1px solid var(--vp-c-bg-soft);
-    border-radius: 12px;
-    background-color: var(--vp-c-bg-soft);
-    cursor: pointer;
-    transition: all 0.3s;
+    @apply p-[24px]
+        border border-solid border-[var(--vp-c-bg-soft)] rounded-[12px]
+        bg-[var(--vp-c-bg-soft)]
+        transition-all cursor-pointer;
 }
 
 .bt-post-card:hover {
