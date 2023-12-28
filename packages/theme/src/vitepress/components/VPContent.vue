@@ -6,11 +6,9 @@ import VPPage from 'vitepress/dist/client/theme-default/components/VPPage.vue';
 import VPHome from './VPHome.vue';
 import VPNotFound from './VPNotFound.vue';
 import { BTBackToTop, BTMineCard, BTTags, BTCategories, BTArchives } from '../../core';
-import type { Config } from '../config';
 
 const { page, frontmatter } = useData();
 const { hasSidebar } = useSidebar();
-const { theme } = useData<Config>();
 </script>
 
 <template>
@@ -63,7 +61,7 @@ const { theme } = useData<Config>();
             <template #aside-bottom><slot name="aside-bottom" /></template>
         </VPDoc>
 
-        <BTMineCard v-if="theme.mineInfo" />
+        <BTMineCard />
 
         <BTBackToTop />
     </div>
