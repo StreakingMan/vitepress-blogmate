@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "一个灵动的vitepress博客主题",
     "main": "src/index.ts",
+    "type": "module",
     "exports": {
         ".": "./src/index.ts",
         "./config": {
